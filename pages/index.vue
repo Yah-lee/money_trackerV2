@@ -176,7 +176,7 @@
 
   <!-- Edit Dialog -->
   <v-dialog v-model="editDialog" max-width="600px">
-    <v-card>
+    <v-card v-if="editingTransaction">
       <v-card-title class="d-flex align-center">
         <v-icon icon="mdi-pencil" class="mr-2" />
         แก้ไขรายการ
@@ -210,7 +210,6 @@
                 step="0.01"
                 required
                 :color="editingTransaction.type === 'income' ? 'success' : 'error'"
-                prefix="฿"
               />
             </v-col>
             <v-col cols="12" md="6">
@@ -525,7 +524,15 @@ watch(() => newTransaction.value.type, (newType) => {
 })
 
 function editTransaction(item: Transaction) {
-  editingTransaction.value = { ...item }
+  editingTransaction.value = {
+    id: item.id,
+    type: item.type,
+    amount: item.amount,
+    category: item.category,
+    description: item.description,
+    date: item.date,
+    currency: item.currency
+  }
   editDialog.value = true
 }
 
