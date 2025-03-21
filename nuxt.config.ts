@@ -1,13 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   css: [
     'vuetify/lib/styles/main.sass',
     '@mdi/font/css/materialdesignicons.css',
   ],
+
   build: {
     transpile: ['vuetify'],
   },
+
   app: {
     head: {
       title: 'Money Tracker',
@@ -17,5 +20,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Track your income and expenses easily' }
       ]
     }
-  }
+  },
+
+  compatibilityDate: '2025-03-21'
 })
